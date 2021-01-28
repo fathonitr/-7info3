@@ -1,0 +1,24 @@
+<h2>A Simple TODO App</h2>
+
+  <table class="table">
+    <tr>
+      <th>TODO List</th>
+      <th>Checklist</th>
+    </tr>
+    <% todoList.forEach(todo => { %>
+      <tr>
+        <td><a><%= todo.name %></a></td>
+        <td><input type="checkbox" <%= todo.done === true ? 'checked' : '' %>/></td>
+        </tr>
+
+      <% }); %>
+  </table>
+
+  
+    <label for="todo">Input your TODO</label><br>
+    <input class="input-bar" type="text" id="todo" name="todo"><br>
+    <input class="add-btn" type="submit" value="Submit">
+  
+
+  <script type="module" src="javascripts/index.js"></script>
+</body>
