@@ -1,10 +1,25 @@
 const inputText = document.querySelector(".input-bar");
 const addBtn= document.querySelector(".add-btn");
 const table= document.querySelector(".table");
+const checkbox=document.querySelector(".checked");
 
 
 
-console.log("test")
+//console.log("test")
+
+const toggleDone=(checkbox,id)=> {
+  let xhr = new XMLHttpRequest();
+  const action = checkbox.checked ? "done" : "reset";
+  xhr.open("GET", `/api/todos/${id}/${action}`, true);
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+          console.log (xhr.responseText);
+          document.getElementById("xhr_status").innerHTML = "XHR Response: "+xhr.responseText;
+      }
+  }
+  xhr.send ();
+}
+
 const userInput = () => {
     inputText.addEventListener("keypress", (e) => {
       if (e.keyCode === 13) {
@@ -17,6 +32,9 @@ const userInput = () => {
       inputText.value = ""; //Clear input bar
     });
   
+    checkbox.addEventListener("click", (e)=>{
+      toggleDone()
+    })
   };
 
 const addItem=(text)=>{
@@ -27,6 +45,6 @@ const addItem=(text)=>{
 
     table.insertAdjacentHTML("beforeend", itemlist);
 }
-console.log(table)
+//console.log(table)
 userInput();
 export default userInput;

@@ -1,10 +1,4 @@
-const mongoose = require('mongoose')
-const todoSchema = mongoose.Schema({
-        name: String,
-        done: Boolean
-})
-module.exports = mongoose.model('Todo', todoSchema)
-/* const todoList =[
+const todoList =[
     {
         id: 0,
         name: 'Breakfeast',
@@ -20,4 +14,5 @@ module.exports = mongoose.model('Todo', todoSchema)
         name: 'Sleep Again',
         done: false
     }
-] */
+]
+module.exports= todoList;

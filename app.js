@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var todosindexRouter = require('./routes/todosIndex')
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -20,9 +21,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const mongoose=require('mongoose');
+mongoose.connect('mongodb://localhost:27017/app03', {useNewUrlParser: true, useUnifiedTopology: true});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/todosIndex', todosindexRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
