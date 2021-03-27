@@ -17,6 +17,6 @@ Todo.deleteMany({})
     mongoose.connection.close()
   })
   .catch(error => {
-    console.log(error.message)
+    console.log(error.message)  
     mongoose.connection.close()
   })
