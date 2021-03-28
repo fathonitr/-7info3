@@ -8,13 +8,13 @@ const mongoose = require('mongoose')
 beforeAll((done) => {
     process.env.NODE_ENV = 'test'
     mongoose.set('bufferCommands', false)
-    mongoose.connect(process.env.MONGO_URL,
+    mongoose.connect("mongodb://localhost:27017/app03",
         {useNewUrlParser: true, useUnifiedTopology: true})
         .then(x => {
-            console.log('connected to mongoose: ' + mongodbURI);
+            console.log('connected to mongoose: ' );//+ mongodbURI
             done();
         })
-        .catch(error => console.log('error creating connection to: ' + mongodbURI + error))
+        .catch(error => console.log('error creating connection to: '  + error))//+ mongodbURI
 
     mongoose.connection.on('error', err => {
         console.log(err)
